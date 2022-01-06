@@ -10,13 +10,7 @@ import Layout from '../../layout/layout.vue';
 const time = new Date().format('yyyy-MM-dd')
 </script>
 <template>
-  <Layout>
-    <button @click="add">++</button>
-    {{count}}
-    <template v-slot:header>放入头部</template>
-    放入身体
-    <div>woshi</div>
-  </Layout>
+woshi
 </template>
 
 

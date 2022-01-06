@@ -1,9 +1,17 @@
 import * as VueRouter from 'vue-router'
 import Home from '@pages/Home/Home.vue'
+import Layout from '../layout/layout.vue';
 const routes = [
   {
     path:'/',
-    component:Home
+    component:Layout,
+    redirect:'/home',
+    children:[
+      {
+        path:'home',
+        component:Home
+      }
+    ]
   }
 ]
 

@@ -1,46 +1,31 @@
 <script lang="ts" setup>
-import {useStore} from 'vuex'
-import { ref,computed } from 'vue'
+import { useStore } from 'vuex'
+import { computed } from 'vue'
 const store = useStore()
-const screenWidth = computed(()=> store.getters['screen/screenWidth'])
-const screenHeight = computed(()=> store.getters['screen/screenHeight'])
-
+const screenHeight = computed(() => store.getters['screen/screenHeight'])
+const screenHeader = computed(() => store.getters['screen/screenHeader'])
+import CHeader from './header.vue'
 
 </script>
 <template>
-  <header class="header">
-    {{screenWidth}}
-    {{screenHeight}}
-    <slot name="header"></slot>
-  </header>
-  <main class="main">
-    <div class="menu">
-      <slot name="menu">菜单</slot>
-    </div>
+  <c-header />
+  <main class="main" :style="{ height: screenHeight - screenHeader + 'px' }">
+    <div class="menu"></div>
     <div class="main-body">
-      <slot></slot>
+      <router-view></router-view>
     </div>
   </main>
-  <footer>
-    <slot name="footer"></slot>
-  </footer>
 </template>
 <style lang="scss" scoped>
-.header {
-  height: 7vh;
-  border-bottom: 1px solid red;
-}
-.main{
+.main {
   display: flex;
-  // border: 1px solid red;
-  height: 100%;
-  // justify
-  .menu{
+  .menu {
+    min-width: 200px;
     flex: 2;
+    box-shadow: 1px 0 0px rgb(107, 107, 107,.2);
   }
-  .main-body{
-    flex: 8;
-    border-left: 1px solid red;
+  .main-body {
+    flex: 12;
   }
 }
 </style>

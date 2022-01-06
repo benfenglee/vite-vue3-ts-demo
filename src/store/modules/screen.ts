@@ -5,8 +5,10 @@ const state = {
   screenHeight: 0
 }
 const getters = {
-  screenWidth: (state: { screenWidth: any }) => state.screenWidth,
-  screenHeight: (state: { screenHeight: any }) => state.screenHeight,
+  screenWidth: (state: { screenWidth: number }) => state.screenWidth,
+  screenHeight: (state: { screenHeight: number }) => state.screenHeight,
+  // 返回顶部的高度
+  screenHeader:(state:{screenHeight:number}) => state.screenHeight / 14
 }
 const actions = {
   setWidth(context: any, data: number) {
