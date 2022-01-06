@@ -1,0 +1,42 @@
+/* 盒子布局 */
+.flex { display: flex; }
+.float-left {float: left;}
+.float-right {float: right;}
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between;}
+.justify-around { justify-content: space-around;}
+.justify-evebkt { justify-content: space-evenly;}
+.justify-start { justify-content: flex-start;}
+.justify-end { justify-content: flex-end;}
+
+.align-center { align-items: center;}
+.align-start { align-items: flex-start;}
+.align-end { align-items: flex-end;}
+.align-stretch { align-items: stretch;}
+.align-baseline {align-items: baseline;}
+
+.self-start{ align-self: flex-start }
+.self-end{ align-self: flex-end }
+.self-center{ align-self: center }
+.self-stretch{ align-self: stretch }
+/*  */
+.block { display: block;}
+.inline{ display: inline;}
+.none { display: none;}
+.block-inline {display: inline-block;}
+/* 文字排版 */
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.text-bold { font-weight: bold;}
+/* 溢出显示省略号 */ 
+.text-over { text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+[class~="text-over-"] { overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; }
+.text-over-2 { -webkit-line-clamp: 2; }
+.text-over-3 { -webkit-line-clamp: 3; }
+.text-over-4 { -webkit-line-clamp: 4; }
+.text-over-5 { -webkit-line-clamp: 5; }
+.text-over-6 { -webkit-line-clamp: 6; }
+.text-over-7 { -webkit-line-clamp: 7; }
+.text-over-8 { -webkit-line-clamp: 8; }
+.text-over-9 { -webkit-line-clamp: 9; }
