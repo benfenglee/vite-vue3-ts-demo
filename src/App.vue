@@ -1,10 +1,10 @@
 <script setup lang="ts">
 // 选择主题
-window.document.documentElement.setAttribute( "data-theme", 'default');
+window.document.documentElement.setAttribute("data-theme", 'default');
 </script>
 
 <template>
-<router-view></router-view>
+  <router-view></router-view>
 </template>
 
 <style lang="scss">
@@ -12,10 +12,10 @@ window.document.documentElement.setAttribute( "data-theme", 'default');
 @import url("@assets/css/scroll.css");
 @import url("@assets/css/common.css");
 /* 从新定义app的宽高 */
-#app{
+#app {
   width: 100vw;
   height: 100vh;
-  overflow:hidden;
+  overflow: hidden;
   //  字体颜色
   @include font_color("font_color1");
   //  边框颜色
