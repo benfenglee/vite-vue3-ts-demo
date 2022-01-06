@@ -4,6 +4,14 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  // css预处理
+  css:{
+    preprocessorOptions:{
+      scss:{
+        additionalData:'@import "./src/theme/_handler.scss";'
+      }
+    }
+  },
   resolve:{
     alias:{
       '@':path.join(__dirname, './src'),
