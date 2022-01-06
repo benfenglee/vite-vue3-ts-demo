@@ -41,10 +41,3 @@
     border-color: themed($color) !important;
   }
 }
-
-//获取左边框颜色
-@mixin border_colorLeft($color) {
-  @include themeify {
-    border-left-color: themed($color) !important;
-  }
-}

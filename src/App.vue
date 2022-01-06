@@ -1,6 +1,6 @@
 <script setup lang="ts">
-window.document.documentElement.setAttribute( "data-theme", 'blue');
-
+// 选择主题
+window.document.documentElement.setAttribute( "data-theme", 'default');
 </script>
 
 <template>
