@@ -1,8 +1,14 @@
 <script lang="ts" setup>
-
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+const store = useStore()
+const screenHeight = computed(() => store.getters['screen/screenHeight'])
+const screenWidth = computed(() => store.getters['screen/screenWidth'])
 </script>
-<template>首页</template>
+<template>
+  {{ screenHeight }}
+  <div>{{ screenWidth }}</div>
+</template>
 
-<style lang="" scoped>
-  
+<style lang="scss" scoped>
 </style>

@@ -3,6 +3,9 @@ import App from '@/App.vue'
 import router from '@/router/index.ts'
 import store from '@/store/index.ts'
 import "@/utils/common.ts"
+import CIcon from '@components/CIcon.vue'
 createApp(App)
-.use(store)
-.use(router).mount('#app')
+  .use(store)
+  .use(router)
+  .component('c-icon', CIcon)
+  .mount('#app')
