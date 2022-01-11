@@ -1,14 +1,16 @@
 <script lang="ts" setup>
-import { useStore } from 'vuex'
-import { computed, ref, onMounted } from 'vue'
-const store = useStore()
-const screenHeight = computed(() => store.getters['screen/screenHeight'])
-const screenHeader = computed(() => store.getters['screen/screenHeader'])
-const menuWidth = computed(() => store.getters['screen/menuWidth'])
-import CHeader from './header.vue'
-const menu = ref(null)
-onMounted(() => store.dispatch('screen/setMenu', (menu.value as any).offsetWidth))
-import Menu from './component/Menu.vue'
+import { useStore } from "vuex";
+import { computed, ref, onMounted } from "vue";
+const store = useStore();
+const screenHeight = computed(() => store.getters["screen/screenHeight"]);
+const screenHeader = computed(() => store.getters["screen/screenHeader"]);
+const menuWidth = computed(() => store.getters["screen/menuWidth"]);
+const menu = ref(null);
+onMounted(() =>
+  store.dispatch("screen/setMenu", (menu.value as any).offsetWidth)
+);
+import CHeader from "./header.vue";
+import Menu from "./component/Menu.vue";
 </script>
 <template>
   <c-header />
