@@ -11,16 +11,30 @@ onMounted(() =>
 );
 import CHeader from "./header.vue";
 import Menu from "./component/Menu.vue";
+const keep = ref([
+  "Home",
+  "RouterManage",
+  "/home",
+  "/router_manage",
+  "RouterManage",
+  "router_manage",
+]);
+// "/home", "/router_manage", "RouterManage", "router_manage"
 </script>
 <template>
   <c-header />
   <main class="main" :style="{ height: screenHeight - screenHeader + 'px' }">
     <div class="menu" ref="menu">
       <Menu />
-      {{ menuWidth }}
     </div>
     <div class="main-body">
-      <router-view></router-view>
+      <!-- 缓存路由 -->
+      <div>我是路由缓存</div>
+      <router-view v-slot="{ Component }">
+        <keep-alive include="Home">
+          <component :is="Component" />
+        </keep-alive>
+      </router-view>
     </div>
   </main>
 </template>

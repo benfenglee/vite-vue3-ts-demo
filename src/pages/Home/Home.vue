@@ -1,14 +1,25 @@
-<script lang="ts" setup>
-import { computed } from 'vue'
-import { useStore } from 'vuex'
-const store = useStore()
-const screenHeight = computed(() => store.getters['screen/screenHeight'])
-const screenWidth = computed(() => store.getters['screen/screenWidth'])
+<script lang="ts">
+import { computed, onMounted } from "vue";
+import { useStore } from "vuex";
+export default {
+  name: "Home",
+  setup() {
+    const store = useStore();
+    const screenHeight = computed(() => store.getters["screen/screenHeight"]);
+    const screenWidth = computed(() => store.getters["screen/screenWidth"]);
+    onMounted(() => {
+      console.log(8);
+    });
+    return {
+      screenHeight,
+      screenWidth,
+    };
+  },
+};
 </script>
 <template>
   {{ screenHeight }}
   <div>{{ screenWidth }}</div>
 </template>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

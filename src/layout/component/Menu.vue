@@ -1,22 +1,9 @@
 <script lang="ts" setup>
-import { List } from "@/utils/structure/List";
-const list = new List();
-list.append(1);
-list.append(1);
-list.append(1);
-list.append(1);
-list.append(1);
-list.insert(3, 2);
-console.log(list);
+import { ref } from "vue";
+import MenuItem from "./MenuItem.vue";
+import { routes } from "@/router/config.ts";
+const menu = ref(routes.filter((el: any) => el.path === "/")[0].children);
 </script>
 <template>
-  <div class="menu">
-    我是菜单1
-    <i class="iconfont icon-close" />
-  </div>
+  <MenuItem v-for="(items, k) in menu" :key="k" :item="items" />
 </template>
-<style lang="scss" scoped>
-.menu {
-  border: 1px solid red;
-}
-</style>
