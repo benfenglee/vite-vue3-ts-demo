@@ -20,7 +20,7 @@ export default (error: any) => {
       case 500:
         console.error('服务器内部错误');
         break;
-      case 500:
+      case 501:
         console.error('无法处理请求');
         break;
       default:
@@ -28,5 +28,5 @@ export default (error: any) => {
         break;
     }
   }
-  return Promise.reject(error)
+  return Promise.reject(error.toString())
 }

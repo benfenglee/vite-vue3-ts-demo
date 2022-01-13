@@ -1,18 +1,15 @@
 import { createStore } from 'vuex'
 import screen from './modules/screen'
+import login from './modules/login'
 export default createStore({
-  state: {
-    count:0
-  },
+  state: {},
   getters: {},
   actions: {},
   mutations: {
-    SET_COUNT(state){
-      state.count ++
-    }
   },
   // vuex模块化
   modules: {
-    screen
+    screen,
+    login
   },
 })

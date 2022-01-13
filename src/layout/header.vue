@@ -1,15 +1,23 @@
 <script lang="ts" setup>
-import { useStore } from 'vuex'
-const store = useStore()
-const screenHeader = store.getters['screen/screenHeader']
-import Logo from './component/Logo.vue'
-import HaderOption from './component/Option.vue'
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+const store = useStore();
+const router = useRouter();
+const screenHeader = store.getters["screen/screenHeader"];
+import Logo from "./component/Logo.vue";
+import HaderOption from "./component/Option.vue";
+const outLogin = () => {
+  router.push("/login");
+};
 </script>
 <template>
-  <div class="header flex align-center justify-between" :style="{ height: screenHeader + 'px' }">
+  <div
+    class="header flex align-center justify-between"
+    :style="{ height: screenHeader + 'px' }"
+  >
     <Logo />
     <HaderOption class="left-auto"></HaderOption>
-    <c-icon icon="❎"></c-icon>
+    <c-icon icon="❎" @click="outLogin"></c-icon>
   </div>
 </template>
 <style lang="scss" scoped>

@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 import vuex_storage from "./utils/vuex_storage";
+import init from "./utils/init";
 onMounted(() => vuex_storage());
 // 选择主题
 window.document.documentElement.setAttribute("data-theme", "default");
 // 进行一些初始化设置
+init();
 </script>
 
 <template>
