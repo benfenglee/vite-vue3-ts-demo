@@ -11,19 +11,25 @@ export const routes = [
     children: [
       {
         path: 'home',
-        name: '首页',
-        component: Home
+        name: 'Home',
+        component: Home,
+        meta: {
+          title: '首页'
+        }
       },
       {
         path: 'router_manage',
-        name: '路由管理',
-        component: RouterManage
+        name: 'RouterManage',
+        component: RouterManage,
+        meta: {
+          title: '权限管理'
+        }
       }
     ]
   },
   {
     path: '/login',
-    name: '登录',
+    name: 'Login',
     component: Login
   }
 ]

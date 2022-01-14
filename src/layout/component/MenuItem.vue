@@ -8,6 +8,9 @@ const props = defineProps({
     default: () => {},
   },
 });
+const emits = defineEmits<{
+  (e: "onRouter", str: string): void;
+}>();
 const menu = computed(() => props.item);
 // 是否展开
 const menuAn = ref(false);
@@ -15,6 +18,9 @@ const currentRoure = computed(() => useRoute());
 const menuHeight = ref(50);
 // 事件点击
 function linkPath() {
+  // console.log(menu.value.path);
+
+  emits("onRouter", menu.value.name);
   if (menu.value.children) {
     menuAn.value = !menuAn.value;
   } else {
@@ -31,7 +37,7 @@ function linkPath() {
       :style="{ height: menuHeight + 'px' }"
       @click="linkPath"
     >
-      <p>{{ menu.name }}</p>
+      <p>{{ menu.meta.title }}</p>
       <i
         v-if="menu.children"
         class="iconfont icon-arrow-right"
