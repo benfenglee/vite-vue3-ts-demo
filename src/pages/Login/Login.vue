@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import { ref } from "@vue/reactivity";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 import $md5 from "md5";
+const router = useRouter();
 const store = useStore();
 const userName = ref("admin");
 const password = ref("123456");
@@ -11,9 +13,15 @@ const login = () => {
     password: $md5(password.value),
     force: true,
   };
-  store.dispatch("login/postSysLogin", params).then((res: any) => {
-    console.log(res);
-  });
+  store
+    .dispatch("login/postSysLogin", params)
+    .then(() => {
+      // 执行一些需要token的操作
+      return store.dispatch("login/getDictQueryAllDictItems");
+    })
+    .then(() => {
+      router.push("/home");
+    });
 };
 </script>
 <template>

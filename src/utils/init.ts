@@ -1,9 +1,12 @@
-import { setStore } from './storage'
 import { getDictQueryAllDictItems } from '@/api/init'
-function init() {
-  // getDictQueryAllDictItems().then((res: any) => {
-  //   console.log(res);
+import { useStore } from 'vuex'
+import { computed } from 'vue'
+const store = useStore()
 
-  // })
+function init() {
+  getDictQueryAllDictItems().then((res: any) => {
+    const store = useStore()
+    console.log(store);
+  })
 }
 export default init

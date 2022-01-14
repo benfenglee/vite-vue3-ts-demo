@@ -1,6 +1,7 @@
 <script lang="ts">
 import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
+import init from "../../utils/init";
 export default {
   name: "Home",
   setup() {
@@ -8,7 +9,7 @@ export default {
     const screenHeight = computed(() => store.getters["screen/screenHeight"]);
     const screenWidth = computed(() => store.getters["screen/screenWidth"]);
     onMounted(() => {
-      console.log(8);
+      init();
     });
     return {
       screenHeight,
