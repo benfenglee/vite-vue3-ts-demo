@@ -8,7 +8,7 @@ export default {
   setup() {
     return {};
   },
-  components: { Text, RollingList },
+  components: { RollingList },
 };
 </script>
 <template>

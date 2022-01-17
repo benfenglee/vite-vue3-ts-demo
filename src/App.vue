@@ -16,6 +16,8 @@ window.document.documentElement.setAttribute("data-theme", "default");
 </template>
 
 <style lang="scss">
+@import url("ant-design-vue/dist/antd.css");
+// 权级覆盖
 @import url("@assets/css/reset.css");
 @import url("@assets/css/scroll.css");
 @import url("@assets/css/common.css");
