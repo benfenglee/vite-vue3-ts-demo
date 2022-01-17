@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 import vuex_storage from "./utils/vuex_storage";
+import zh_CN from "ant-design-vue/lib/locale-provider/zh_CN";
+import { ConfigProvider } from "ant-design-vue";
 // 存储Vuex值
 onMounted(() => vuex_storage());
 // 选择主题
@@ -12,7 +14,9 @@ window.document.documentElement.setAttribute("data-theme", "default");
     rel="stylesheet"
     href="https://at.alicdn.com/t/font_3133183_jq38ukm9mpm.css?spm=a313x.7781069.1998910419.177&file=font_3133183_jq38ukm9mpm.css"
   />
-  <router-view></router-view>
+  <ConfigProvider :locale="zh_CN">
+    <router-view></router-view>
+  </ConfigProvider>
 </template>
 
 <style lang="scss">

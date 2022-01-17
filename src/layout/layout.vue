@@ -116,6 +116,10 @@ const closeKeep = (name: string) => {
       background-color: #e4e4e433;
       height: 100%;
       position: relative;
+      // .view {
+      //   border: 1px solid red;
+      //   box-shadow: 0 0 4px #666;
+      // }
       // overflow: hidden;
       // display: inline-block;
       // min-height: 50px;
