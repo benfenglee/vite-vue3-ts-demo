@@ -8,7 +8,7 @@ export const routes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/home',
+    redirect: '/dict_manage',
     children: [
       {
         path: 'home',

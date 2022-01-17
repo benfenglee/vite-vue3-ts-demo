@@ -6,11 +6,9 @@ import RollingList from "./component/RollingList.vue";
 export default {
   name: "Home",
   setup() {
-    return {
-      RollingList
-    };
+    return {};
   },
-  components: { Text, RollingList }
+  components: { Text, RollingList },
 };
 </script>
 <template>

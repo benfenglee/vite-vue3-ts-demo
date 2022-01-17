@@ -1,6 +1,6 @@
 import { postSysLogin } from "@/api/login";
 import { getDictQueryAllDictItems } from '@/api/init'
-import { setStore } from '../../utils/storage'
+import { setStore, getStore } from '../../utils/storage'
 interface Login {
   username: string,
   password: string,
@@ -31,7 +31,12 @@ const getters = {
   userInfo: (state: State) => state.userInfo,
   departs: (state: State) => state.departs,
   tenantId: (state: State) => state.tenantId,
-  dict: (state: State) => state.dict
+  dict: (state: State) => {
+    if (JSON.stringify(state.dict) === "{}") {
+      return getStore('dict')
+    }
+    return state.dict
+  }
 }
 const actions = {
   // 登录
@@ -48,7 +53,7 @@ const actions = {
   getDictQueryAllDictItems(context: any, data: any) {
     return new Promise((resolve, reject) => {
       getDictQueryAllDictItems(data).then((res: any) => {
-        context.commit('SET_DICT', res.result)
+        context.commit('SET_DICT', res.data.result)
         resolve(res)
       }).catch((err: any) => reject(err))
     })
@@ -69,6 +74,7 @@ const mutations = {
   },
   // 存储字典
   SET_DICT(state: any, dict: any) {
+    setStore('dict', dict)
     state.dict = dict
   }
 }

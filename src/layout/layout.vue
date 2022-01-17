@@ -28,8 +28,8 @@ onMounted(() =>
 const keep = ref<Array<any>>([]);
 // 初始化的时候添加一个进去
 onMounted(() => {
-  keep.value.push(currentRoure.value.name || '')
-})
+  keep.value.push(currentRoure.value.name || "");
+});
 // 已缓存的
 const alreadyMenu = computed(() =>
   menuRoutes.value.filter((el: { name: string }) =>
@@ -66,20 +66,36 @@ const closeKeep = (name: string) => {
 </script>
 <template>
   <c-header />
-  <main class="main" :style="{ height: screenPx.height - screenPx.header + 'px' }">
+  <main
+    class="main"
+    :style="{ height: screenPx.height - screenPx.header + 'px' }"
+  >
     <div class="menu" ref="menu">
-      <MenuItem v-for="(items, k) in menuRoutes" :key="k" :item="items" @onRouter="onRouter" />
+      <MenuItem
+        v-for="(items, k) in menuRoutes"
+        :key="k"
+        :item="items"
+        @onRouter="onRouter"
+      />
     </div>
     <div class="main-body">
       <!-- 缓存路由 -->
       <CacheRoute :alreadyMenu="alreadyMenu" @closeKeep="closeKeep" />
-      <transition mode="out-in" enter-active-class="animate__animated animate__fadeInUp">
-        <router-view v-slot="{ Component }">
-          <keep-alive :include="keep">
-            <component class="component-view animate__animated animate__fadeInUp" :is="Component" />
-          </keep-alive>
-        </router-view>
-      </transition>
+      <router-view v-slot="{ Component }">
+        <keep-alive :include="keep">
+          <transition
+            mode="out-in"
+            enter-active-class="animate__animated animate__fadeInUp"
+          >
+            <div class="component-view">
+              <component
+                class="animate__animated animate__fadeInUp"
+                :is="Component"
+              />
+            </div>
+          </transition>
+        </keep-alive>
+      </router-view>
     </div>
   </main>
 </template>
@@ -97,7 +113,7 @@ const closeKeep = (name: string) => {
     .component-view {
       padding: 20px 0px 0 20px;
       border: 1px solid #ccc;
-      background-color: #ffffffee;
+      background-color: #e4e4e433;
       height: 100%;
       position: relative;
       // overflow: hidden;
