@@ -2,6 +2,7 @@
 .flex { display: flex; }
 .float-left {float: left;}
 .float-right {float: right;}
+.flex-center{justify-content: center;align-items: center;}
 .justify-center { justify-content: center; }
 .justify-between { justify-content: space-between;}
 .justify-around { justify-content: space-around;}
@@ -40,3 +41,5 @@
 .text-over-7 { -webkit-line-clamp: 7; }
 .text-over-8 { -webkit-line-clamp: 8; }
 .text-over-9 { -webkit-line-clamp: 9; }
+/* 鼠标形状 */
+.pointer{ cursor: pointer; }

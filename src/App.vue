@@ -19,6 +19,7 @@ window.document.documentElement.setAttribute("data-theme", "default");
 @import url("@assets/css/reset.css");
 @import url("@assets/css/scroll.css");
 @import url("@assets/css/common.css");
+@import url("@assets/css/font.css");
 /* 从新定义app的宽高 */
 #app {
   width: 100vw;

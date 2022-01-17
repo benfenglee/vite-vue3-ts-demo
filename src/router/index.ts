@@ -5,4 +5,8 @@ const router = VueRouter.createRouter({
   routes
 
 })
+router.beforeEach((to, from, next) => {
+  document.title = '云平台|' + to.meta.title
+  next()
+})
 export default router

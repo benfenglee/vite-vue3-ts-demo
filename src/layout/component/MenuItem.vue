@@ -5,7 +5,7 @@ const router = useRouter();
 const props = defineProps({
   item: {
     type: Object,
-    default: () => {},
+    default: () => { },
   },
 });
 const emits = defineEmits<{
@@ -32,17 +32,13 @@ function linkPath() {
 <template>
   <div class="menu-item">
     <div
-      class="item flex align-center justify-between"
+      class="item flex align-center justify-between pointer"
       :class="{ on: currentRoure.path === '/' + menu.path }"
       :style="{ height: menuHeight + 'px' }"
       @click="linkPath"
     >
-      <p>{{ menu.meta.title }}</p>
-      <i
-        v-if="menu.children"
-        class="iconfont icon-arrow-right"
-        :class="{ an: menuAn }"
-      />
+      <p class="font-14">{{ menu.meta.title }}</p>
+      <i v-if="menu.children" class="iconfont icon-arrow-right" :class="{ an: menuAn }" />
     </div>
     <div
       class="children"
@@ -66,9 +62,7 @@ function linkPath() {
     padding: 0 20px;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
     border-bottom: 1px solid #eaeaea;
-    font-size: 14px;
     &::after {
       content: "";
       position: absolute;

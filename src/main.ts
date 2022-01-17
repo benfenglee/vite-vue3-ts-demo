@@ -4,6 +4,7 @@ import router from '@/router/index.ts'
 import store from '@/store/index.ts'
 import "@/utils/common.ts"
 import CIcon from '@components/CIcon.vue'
+import 'animate.css'
 createApp(App)
   .use(store)
   .use(router)

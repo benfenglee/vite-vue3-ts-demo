@@ -16,10 +16,11 @@ const closeKeep = (name: string) => emits("closeKeep", name);
 </script>
 
 <template>
-  <div class="keep-menu flex justify-start align-items">
+  <div class="keep-menu flex justify-start align-items animate__animated animate__fadeInUp">
     <p
       v-for="item in alreadyMenu"
       :key="item.path"
+      class="font-14 pointer"
       :class="{ on: currentRoure.path === '/' + item.path }"
       @click.self="goLink('/' + item.path)"
     >
@@ -33,7 +34,6 @@ const closeKeep = (name: string) => emits("closeKeep", name);
 $color: rgb(0, 195, 255);
 .keep-menu {
   height: 50px;
-  // border-bottom: 1px solid red;
   box-shadow: 2px 1px 2px #ccc;
   padding: 6px 20px;
   position: relative;
@@ -43,7 +43,6 @@ $color: rgb(0, 195, 255);
     transition: all 400ms;
     border-bottom: 1px solid transparent;
     margin-right: 20px;
-    cursor: pointer;
     position: relative;
     &::after {
       content: "";

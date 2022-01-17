@@ -2,7 +2,7 @@
 import { useStore } from "vuex";
 import { computed, ref, onMounted } from "vue";
 import { routes } from "@/router/config.ts";
-import { useRoute, useRouter } from "vue-router";
+import { RouteRecordName, useRoute, useRouter } from "vue-router";
 import CHeader from "./header.vue";
 import MenuItem from "./component/MenuItem.vue";
 import CacheRoute from "./component/CacheRoute.vue";
@@ -11,7 +11,6 @@ const menuRoutes = ref(routes.filter((el: any) => el.path === "/")[0].children);
 // 当前路由
 const currentRoure = computed(() => useRoute());
 const router = useRouter();
-console.log(currentRoure.value.name);
 
 const store = useStore();
 const screenPx = computed(() => {
@@ -26,7 +25,11 @@ onMounted(() =>
   store.dispatch("screen/setMenu", (menu.value as any).offsetWidth)
 );
 // 要缓存的 组件的name
-const keep = ref(["Home"]);
+const keep = ref<Array<any>>([]);
+// 初始化的时候添加一个进去
+onMounted(() => {
+  keep.value.push(currentRoure.value.name || '')
+})
 // 已缓存的
 const alreadyMenu = computed(() =>
   menuRoutes.value.filter((el: { name: string }) =>
@@ -63,27 +66,20 @@ const closeKeep = (name: string) => {
 </script>
 <template>
   <c-header />
-  <main
-    class="main"
-    :style="{ height: screenPx.header - screenPx.header + 'px' }"
-  >
+  <main class="main" :style="{ height: screenPx.height - screenPx.header + 'px' }">
     <div class="menu" ref="menu">
-      <!-- <MenuItem /> -->
-      <MenuItem
-        v-for="(items, k) in menuRoutes"
-        :key="k"
-        :item="items"
-        @onRouter="onRouter"
-      />
+      <MenuItem v-for="(items, k) in menuRoutes" :key="k" :item="items" @onRouter="onRouter" />
     </div>
     <div class="main-body">
       <!-- 缓存路由 -->
       <CacheRoute :alreadyMenu="alreadyMenu" @closeKeep="closeKeep" />
-      <router-view v-slot="{ Component }">
-        <keep-alive :include="keep">
-          <component :is="Component" />
-        </keep-alive>
-      </router-view>
+      <transition mode="out-in" enter-active-class="animate__animated animate__fadeInUp">
+        <router-view v-slot="{ Component }">
+          <keep-alive :include="keep">
+            <component class="component-view animate__animated animate__fadeInUp" :is="Component" />
+          </keep-alive>
+        </router-view>
+      </transition>
     </div>
   </main>
 </template>
@@ -97,6 +93,17 @@ const closeKeep = (name: string) => {
   }
   .main-body {
     flex: 12;
+    overflow: hidden;
+    .component-view {
+      padding: 20px 0px 0 20px;
+      border: 1px solid #ccc;
+      background-color: #ffffffee;
+      height: 100%;
+      position: relative;
+      // overflow: hidden;
+      // display: inline-block;
+      // min-height: 50px;
+    }
   }
 }
 </style>
