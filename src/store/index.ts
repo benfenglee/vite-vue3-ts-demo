@@ -2,6 +2,8 @@ import { createStore } from 'vuex'
 import screen from './modules/screen'
 import login from './modules/login'
 import assetsFile from './modules/assets'
+import dict from './modules/dict'
+import bigscreen from './modules/bigscreen'
 export default createStore({
   state: {},
   getters: {},
@@ -12,6 +14,8 @@ export default createStore({
   modules: {
     screen,
     login,
-    assetsFile
+    assetsFile,
+    dict,
+    bigscreen
   },
 })

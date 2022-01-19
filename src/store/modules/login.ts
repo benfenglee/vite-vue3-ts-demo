@@ -1,5 +1,5 @@
 import { postSysLogin } from "@/api/login";
-import { getDictQueryAllDictItems } from '@/api/init'
+import { getDictQueryAllDictItems } from '@/api/dict'
 import { setStore, getStore } from '../../utils/storage'
 interface Login {
   username: string,

@@ -8,63 +8,84 @@ import {
   Popconfirm,
   Divider,
 } from "ant-design-vue";
-import MinTable from "./table";
+import { useStore } from "vuex";
+import MinTable from "@/public/table";
+import MinCache from "@/public/cache";
+import AddDict from "./modules/AddDict.vue";
+import { ref } from "@vue/reactivity";
+const columns = [
+  {
+    title: "#",
+    dataIndex: "",
+    key: "rowIndex",
+    width: 120,
+    align: "center",
+    customRender: function (text: any) {
+      return parseInt(text.index) + 1;
+    },
+  },
+  {
+    dataIndex: "dictName",
+    title: "字典名称",
+    key: "dictName",
+  },
+  {
+    title: "字典编号",
+    dataIndex: "dictCode",
+    key: "dictCode",
+  },
+  {
+    title: "描述",
+    key: "description",
+    dataIndex: "description",
+    width: "30%",
+  },
+  {
+    title: "操作",
+    align: "center",
+    key: "action",
+    slots: { customRender: "action" },
+  },
+];
 export default {
   name: "DictManage",
   setup() {
-    const { ipagination, loading, handleTableChange } = MinTable();
-    const columns = [
-      {
-        dataIndex: "dictName",
-        title: "字典名称",
-        key: "dictName",
-      },
-      {
-        title: "字典编号",
-        dataIndex: "dictCode",
-        key: "dictCode",
-      },
-      {
-        title: "描述",
-        key: "description",
-        dataIndex: "description",
-      },
-      {
-        title: "操作",
-        key: "action",
-        width: "30%",
-        slots: { customRender: "action" },
-      },
-    ];
+    const store = useStore();
+    const getData = (data: any) => store.dispatch("dict/getDictList", data);
+    const {
+      ipagination,
+      loading,
+      dataSource,
+      queryParam,
+      handleTableChange,
+      resetChange,
+      getList,
+    } = MinTable(getData);
+    const { refrechCache } = MinCache();
+    const isModal = ref(false);
     return {
       columns,
-      dataSource: [
-        {
-          key: "1",
-          dictName: "John Brown",
-          dictCode: 32,
-          description: "New York No. 1 Lake Park",
-        },
-        {
-          key: "2",
-          dictName: "Jim Green",
-          dictCode: 42,
-          description: "London No. 1 Lake Park",
-        },
-        {
-          key: "3",
-          dictName: "Joe Black",
-          dictCode: 32,
-          description: "Sidney No. 1 Lake Park",
-        },
-      ],
-      handleTableChange,
-      editDict() {},
+      dataSource,
       loading,
       ipagination,
+      handleTableChange,
+      editDict() {},
+      resetChange,
+      queryParam,
+      getList,
+      refrechCache,
+      isModal,
+      addDictClick() {
+        isModal.value = !isModal.value;
+      },
+      hideModel() {
+        console.log(82);
+
+        isModal.value = !isModal.value;
+      },
     };
   },
-  components: { Table, Input, Row, Col, Button, Popconfirm, Divider },
+  components: { Table, Input, Row, Col, Button, Popconfirm, Divider, AddDict },
 };
 </script>
 <template>
@@ -75,25 +96,27 @@ export default {
         <Input
           style="width: 200px; margin-right: 20px"
           placeholder="Basic usage"
+          v-model:value="queryParam.dictName"
         />
         <p class="font-14">字典编号：</p>
         <Input
           style="width: 200px; margin-right: 20px"
           placeholder="Basic usage"
+          v-model:value="queryParam.dictCode"
         />
         <Col :span="12" class="flex align-center">
-          <Button class="margin-right" type="primary">
+          <Button class="margin-right" type="primary" @click="getList">
             <i class="iconfont icon-search margin-right-xs" />
             查询</Button
           >
-          <Button type="primary">
+          <Button type="primary" @click="resetChange">
             <i class="iconfont icon-leftalignment margin-right-xs" />
             重置</Button
           >
         </Col>
       </Row>
       <Row class="margin-top">
-        <Button class="margin-right" type="primary">
+        <Button class="margin-right" type="primary" @click="addDictClick">
           <i class="iconfont icon-add margin-right-xs" />
           添加</Button
         >
@@ -105,7 +128,7 @@ export default {
           <i class="iconfont icon-descending margin-right-xs" />
           导入</Button
         >
-        <Button class="margin-right" type="primary">
+        <Button class="margin-right" type="primary" @click="refrechCache">
           <i class="iconfont icon-exchangerate margin-right-xs" />
           缓存刷新</Button
         >
@@ -117,10 +140,11 @@ export default {
     </div>
     <Table
       :columns="columns"
-      :row-key="(record) => record.description"
+      :row-key="(record) => record.dictCode"
       :data-source="dataSource"
       :pagination="ipagination"
       :loading="loading"
+      class="table"
       @change="handleTableChange"
       size="middle"
     >
@@ -138,12 +162,19 @@ export default {
         >
       </template>
     </Table>
+    <AddDict :isModal="isModal" @hideModel="hideModel" />
   </div>
 </template>
 <style lang="scss" scoped>
 .dict-manage {
+  height: 100%;
+  overflow-y: auto;
   background-color: white;
   padding: 20px;
+  .table {
+    height: calc(100% - 110px);
+    overflow-y: auto;
+  }
   .dict-select {
     margin-bottom: 20px;
   }

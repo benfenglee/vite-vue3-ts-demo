@@ -4,6 +4,8 @@ import Layout from '../layout/layout.vue';
 import Login from '../pages/Login/Login.vue'
 import RouterManage from '../pages/RouterManage/RouterManage.vue'
 import DictManage from '../pages/DictManage/DictManage.vue'
+import BigScreenMap from '../pages/BigScreenMap/BigScreenMap.vue'
+
 export const routes = [
   {
     path: '/',
@@ -16,6 +18,14 @@ export const routes = [
         component: Home,
         meta: {
           title: '首页'
+        }
+      },
+      {
+        path: 'big_screen_map',
+        name: 'BigScreenMap',
+        component: BigScreenMap,
+        meta: {
+          title: '大屏地图修饰'
         }
       },
       {

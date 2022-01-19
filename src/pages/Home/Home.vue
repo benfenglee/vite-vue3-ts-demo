@@ -2,7 +2,7 @@
 import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
-import RollingList from "./component/RollingList.vue";
+import RollingList from "./modules/RollingList.vue";
 export default {
   name: "Home",
   setup() {
