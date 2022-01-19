@@ -23,12 +23,12 @@ export default defineConfig({
   server: {
     port: 9981,
     open: true,
-    proxy: {
-      '/api': {
-        target: 'http://192.168.199.163:5001/api',
-        changeOrigin: true,
-        rewrite: path => path.replace(/^\/api/, '')
-      }
-    }
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://192.168.199.163:5001/api',
+    //     changeOrigin: true,
+    //     rewrite: path => path.replace(/^\/api/, '')
+    //   }
+    // }
   }
 })

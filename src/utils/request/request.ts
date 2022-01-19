@@ -2,11 +2,8 @@ import axios from 'axios'
 import err from './error'
 import { postSysLoginUrl } from '@/api/login'
 import { getStore } from '../storage'
-const apiBaseUrl = ''
-const http = axios.create({
-  baseURL: apiBaseUrl,
-  timeout: 30000
-})
+import config from './config'
+const http = axios.create(config)
 http.interceptors.request.use((config: any) => {
   if (config.url !== postSysLoginUrl) {
     config.headers['tenant-id'] = getStore('tenantId')

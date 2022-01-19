@@ -11,8 +11,7 @@ const emits = defineEmits<{
 }>();
 
 const slots = useSlots();
-console.log(slots);
-const animateModal = ref(true);
+const animateModal = ref(false);
 watchEffect(() => {
   if (props.isModal) {
     animateModal.value = true;
