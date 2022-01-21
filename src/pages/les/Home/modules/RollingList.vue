@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import { useStore } from "vuex";
-const listDom = ref(null);
+const listDom = ref<HTMLElement | null>(null);
 const store = useStore();
 const deviceType = computed(
   () => store.getters["login/dict"]["les_sffs_eqpt_type"]
@@ -30,17 +30,17 @@ const distance = 500;
 const speed = distance / 30;
 // 左移动
 const prveClick = () => {
-  if (listDom.value.scrollLeft === 0) {
+  if ((listDom.value as HTMLElement).scrollLeft === 0) {
     return;
   }
-  const sum = listDom.value.scrollLeft - distance;
+  const sum = (listDom.value as HTMLElement).scrollLeft - distance;
   function render() {
-    if (listDom.value.scrollLeft - 10 < 0) {
-      listDom.value.scrollLeft = 0;
+    if ((listDom.value as HTMLElement).scrollLeft - 10 < 0) {
+      (listDom.value as HTMLElement).scrollLeft = 0;
       return;
     }
-    if (listDom.value.scrollLeft > sum) {
-      listDom.value.scrollLeft -= distance / speed;
+    if ((listDom.value as HTMLElement).scrollLeft > sum) {
+      (listDom.value as HTMLElement).scrollLeft -= distance / speed;
       requestAnimationFrame(render);
     }
   }
@@ -48,18 +48,20 @@ const prveClick = () => {
 };
 // 右移动
 const nextClick = () => {
-  const hubWidth = listDom.value.scrollWidth - listDom.value.offsetWidth;
-  const sum = listDom.value.scrollLeft + distance;
-  if (listDom.value.scrollLeft === hubWidth) {
+  const hubWidth =
+    (listDom.value as HTMLElement).scrollWidth -
+    (listDom.value as HTMLElement).offsetWidth;
+  const sum = (listDom.value as HTMLElement).scrollLeft + distance;
+  if ((listDom.value as HTMLElement).scrollLeft === hubWidth) {
     return;
   }
   function render() {
-    if (listDom.value.scrollLeft >= hubWidth) {
-      listDom.value.scrollLeft = hubWidth;
+    if ((listDom.value as HTMLElement).scrollLeft >= hubWidth) {
+      (listDom.value as HTMLElement).scrollLeft = hubWidth;
       return;
     }
-    if (listDom.value.scrollLeft < sum) {
-      listDom.value.scrollLeft += distance / speed;
+    if ((listDom.value as HTMLElement).scrollLeft < sum) {
+      (listDom.value as HTMLElement).scrollLeft += distance / speed;
       requestAnimationFrame(render);
     }
   }
@@ -76,7 +78,7 @@ onMounted(() => {
   document.body.addEventListener("mousemove", (e) => {
     if (isMove.value) {
       const x = e.clientX - moveLeft;
-      listDom.value.scrollLeft -= x / 40;
+      (listDom.value as HTMLElement).scrollLeft -= x / 40;
     }
   });
   document.body.addEventListener("mouseup", (e) => {

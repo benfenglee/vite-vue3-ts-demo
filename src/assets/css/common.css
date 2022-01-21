@@ -154,6 +154,12 @@
 .pointer {
   cursor: pointer;
 }
+.cursor-move {
+  cursor: move;
+}
+.active-move:active {
+  cursor: move;
+}
 /* margin */
 .margin-left-xs {
   margin-left: 5px;
@@ -229,4 +235,7 @@
 }
 .margin-bottom-auto {
   margin-bottom: auto;
+}
+.not-margin {
+  margin: 0;
 }

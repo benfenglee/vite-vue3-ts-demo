@@ -9,19 +9,27 @@ interface Window {
 }
 const store = useStore();
 const TMap = (window as any).TMap;
-const mapDom = ref(null);
+const mapDom = ref<HTMLElement | null>(null);
 const buildingList = ref<any[]>();
 const componentMap = ref<object>({});
 let markerCluster: any = null;
 const mapInit = () => {
-  const center = new TMap.LatLng(35.86711521382821, 107.61635904902096);
+  const center = new TMap.LatLng(23.86711521382821, 116.61635904902096);
   componentMap.value = new TMap.Map(mapDom.value, {
     center,
-    zoom: 4,
+    zoom: 8,
     mapStyleId: "style2",
   });
   // 2D显示
   (componentMap as any).value.setViewMode("2D");
+  // 清除地图的logo等组件
+  const mapDoms = (mapDom.value as HTMLElement).getElementsByTagName("div");
+  for (let i = 0; i < mapDoms.length; i++) {
+    const el = mapDoms[i];
+    if (i >= 3) {
+      el.remove();
+    }
+  }
 };
 const initMarkerCluster = () => {
   const option = {
@@ -140,4 +148,8 @@ onMounted(() => {
   <div id="map" ref="mapDom"></div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+#map {
+  height: 100vh;
+}
+</style>

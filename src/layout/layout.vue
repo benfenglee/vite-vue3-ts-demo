@@ -30,16 +30,30 @@ const keep = ref<Array<any>>([]);
 onMounted(() => {
   keep.value.push(currentRoure.value.name || "");
 });
+// 菜单只选择可展示的
+const menuFlat = computed(() => {
+  const v = JSON.parse(JSON.stringify(menuRoutes.value));
+  const result = [];
+  while (v.length) {
+    const p = v.pop();
+    const c = (p.children && p.children.length) || 0;
+    if (c > 0) {
+      v.push(...p.children);
+    } else {
+      result.push(p);
+    }
+  }
+  return result;
+});
 // 已缓存的
 const alreadyMenu = computed(() =>
-  menuRoutes.value.filter((el: { name: string }) =>
-    keep.value.includes(el.name)
-  )
+  menuFlat.value.filter((el: { name: string }) => keep.value.includes(el.name))
 );
 // 新增缓存路由
 const onRouter = (e: string) => {
   keep.value.push(e);
   keep.value = Array.from(new Set(keep.value));
+  console.log(43, keep.value);
 };
 // 删除已缓存的路由
 const closeKeep = (name: string) => {
@@ -65,7 +79,7 @@ const closeKeep = (name: string) => {
 };
 </script>
 <template>
-  <c-header />
+  <CHeader />
   <main
     class="main"
     :style="{ height: screenPx.height - screenPx.header + 'px' }"
@@ -82,19 +96,19 @@ const closeKeep = (name: string) => {
       <!-- 缓存路由 -->
       <CacheRoute :alreadyMenu="alreadyMenu" @closeKeep="closeKeep" />
       <router-view v-slot="{ Component }">
-        <keep-alive :include="keep">
-          <transition
-            mode="out-in"
-            enter-active-class="animate__animated animate__fadeInUp"
-          >
-            <div class="component-view">
-              <component
-                class="animate__animated animate__fadeInUp"
-                :is="Component"
-              />
-            </div>
-          </transition>
-        </keep-alive>
+        <div class="component-view">
+          <!-- 缓存组件 -->
+          <!-- <keep-alive :include="keep"> -->
+          <!-- 开发时，不启用缓存组件 -->
+          <keep-alive :include="[]">
+            <transition
+              mode="out-in"
+              enter-active-class="animate__animated animate__fadeInUp"
+            >
+              <component class="view" :is="Component" />
+            </transition>
+          </keep-alive>
+        </div>
       </router-view>
     </div>
   </main>
@@ -112,12 +126,15 @@ const closeKeep = (name: string) => {
     overflow: hidden;
     .component-view {
       padding: 20px 0px 0 20px;
-      border: 1px solid #ccc;
       background-color: #e4e4e433;
       height: calc(100% - 50px);
       position: relative;
       overflow: auto;
     }
   }
+}
+.view {
+  box-shadow: 0 0 4px #cccccc99;
+  padding: 20px;
 }
 </style>

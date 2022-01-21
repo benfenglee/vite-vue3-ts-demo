@@ -16,13 +16,15 @@ const closeKeep = (name: string) => emits("closeKeep", name);
 </script>
 
 <template>
-  <div class="keep-menu flex justify-start align-items animate__animated animate__fadeInUp">
+  <div
+    class="keep-menu flex justify-start align-items animate__animated animate__fadeInUp"
+  >
     <p
       v-for="item in alreadyMenu"
       :key="item.path"
       class="font-14 pointer"
-      :class="{ on: currentRoure.path === '/' + item.path }"
-      @click.self="goLink('/' + item.path)"
+      :class="{ on: currentRoure.path === item.path }"
+      @click.self="goLink(item.path)"
     >
       {{ item.meta.title }}
       <i class="iconfont icon-close" @click="closeKeep(item.name)" />

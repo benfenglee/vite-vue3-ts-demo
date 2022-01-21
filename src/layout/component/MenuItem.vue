@@ -5,27 +5,34 @@ const router = useRouter();
 const props = defineProps({
   item: {
     type: Object,
-    default: () => { },
+    default: () => {},
   },
 });
 const emits = defineEmits<{
   (e: "onRouter", str: string): void;
+  (e: "pushLen"): void;
+  (e: "popLen"): void;
 }>();
 const menu = computed(() => props.item);
 // 是否展开
 const menuAn = ref(false);
 const currentRoure = computed(() => useRoute());
 const menuHeight = ref(50);
+// 子集高度
+const childLen = ref(1);
 // 事件点击
 function linkPath() {
-  // console.log(menu.value.path);
-
-  emits("onRouter", menu.value.name);
   if (menu.value.children) {
     menuAn.value = !menuAn.value;
+    menuAn.value ? emits("pushLen") : emits("popLen");
   } else {
+    emits("onRouter", menu.value.name);
     router.push(menu.value.path);
   }
+}
+function onRouter(name) {
+  console.log(name);
+  emits("onRouter", name);
 }
 </script>
 
@@ -33,17 +40,21 @@ function linkPath() {
   <div class="menu-item">
     <div
       class="item flex align-center justify-between pointer"
-      :class="{ on: currentRoure.path === '/' + menu.path }"
+      :class="{ on: currentRoure.path === menu.path }"
       :style="{ height: menuHeight + 'px' }"
       @click="linkPath"
     >
       <p class="font-14">{{ menu.meta.title }}</p>
-      <i v-if="menu.children" class="iconfont icon-arrow-right" :class="{ an: menuAn }" />
+      <i
+        v-if="menu.children"
+        class="iconfont icon-arrow-right"
+        :class="{ an: menuAn }"
+      />
     </div>
     <div
       class="children"
       :style="{
-        height: menuAn ? menu.children.length * menuHeight + 'px' : '0',
+        height: menuAn ? childLen * menuHeight + 'px' : '0',
       }"
     >
       <MenuItem
@@ -51,6 +62,9 @@ function linkPath() {
         :key="k"
         :item="items"
         style="padding-left: 20px"
+        @onRouter="() => onRouter(items.name)"
+        @pushLen="() => childLen++"
+        @popLen="() => childLen--"
       />
     </div>
   </div>

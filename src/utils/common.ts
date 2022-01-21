@@ -1,10 +1,10 @@
 
-interface Date{
-  format(fmt: string):string,
-  dayhms(ms:string|number):string
+interface Date {
+  format(fmt: string): string,
+  dayhms(ms: string | number): string
 }
-Date.prototype.format = function(fmt):string {
-  var o:any = {
+Date.prototype.format = function (fmt): string {
+  var o: any = {
     'M+': this.getMonth() + 1, // 月份
     'd+': this.getDate(), // 日
     'H+': this.getHours(), // 24小时制
@@ -31,7 +31,7 @@ Date.prototype.format = function(fmt):string {
   return fmt
 }
 // 将传入毫秒数 毫秒数转为 天 小时 分 秒 例：3000 转为 3秒
-Date.prototype.dayhms = function(ms:number) {
+Date.prototype.dayhms = function (ms: number) {
   var str = ''
   var days = parseInt(String(ms / (1000 * 60 * 60 * 24)))
   var hours = parseInt(String((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)))
@@ -50,4 +50,22 @@ Date.prototype.dayhms = function(ms:number) {
       }
     }
   }
+}
+// 从第二个字符开始大写字母转为_(小写字母) 例: ABc => a_bc
+function caselc(str: string): string {
+  /**
+   * 时间复杂度
+   * O(^n)
+   * */
+  let s = "";
+  str
+    .split("")
+    .forEach((el, i) =>
+      /[A-Z]/.test(el)
+        ? i === 0
+          ? (s += el.toLowerCase())
+          : (s += "_" + el.toLowerCase())
+        : (s += el)
+    );
+  return s;
 }

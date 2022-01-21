@@ -30,6 +30,7 @@ export const delStore = (name: string) => {
   if (!globalThis) return
   if (typeof name === 'string') {
     globalThis.localStorage.removeItem(name + '_storage')
+    return
   }
   return console.error('调用delStore,name请传入字符串');
 }

@@ -1,7 +1,9 @@
 import * as VueRouter from 'vue-router'
 import { routes } from './config'
 const router = VueRouter.createRouter({
-  history: VueRouter.createWebHashHistory(),
+  // history: VueRouter.createWebHashHistory(),
+  history: VueRouter.createWebHistory(),
+
   routes
 
 })

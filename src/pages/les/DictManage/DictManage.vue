@@ -79,8 +79,6 @@ export default {
         isModal.value = !isModal.value;
       },
       hideModel() {
-        console.log(82);
-
         isModal.value = !isModal.value;
       },
     };

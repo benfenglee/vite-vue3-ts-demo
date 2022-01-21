@@ -4,6 +4,7 @@ import login from './modules/login'
 import assetsFile from './modules/assets'
 import dict from './modules/dict'
 import bigscreen from './modules/bigscreen'
+import routerManage from './modules/routerManage'
 export default createStore({
   state: {},
   getters: {},
@@ -16,6 +17,7 @@ export default createStore({
     login,
     assetsFile,
     dict,
-    bigscreen
+    bigscreen,
+    routerManage
   },
 })
