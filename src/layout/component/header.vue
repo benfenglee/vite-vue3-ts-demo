@@ -4,8 +4,8 @@ import { useRouter } from "vue-router";
 const store = useStore();
 const router = useRouter();
 const screenHeader = store.getters["screen/screenHeader"];
-import Logo from "./component/Logo.vue";
-import HaderOption from "./component/Option.vue";
+import Logo from "./Logo.vue";
+import HaderOption from "./Option.vue";
 const outLogin = () => {
   router.push("/login");
 };

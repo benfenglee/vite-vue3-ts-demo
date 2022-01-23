@@ -3,7 +3,7 @@ import { useStore } from "vuex";
 import { computed, ref, onMounted } from "vue";
 import { routes } from "@/router/config.ts";
 import { RouteRecordName, useRoute, useRouter } from "vue-router";
-import CHeader from "./header.vue";
+import CHeader from "./component/header.vue";
 import MenuItem from "./component/MenuItem.vue";
 import CacheRoute from "./component/CacheRoute.vue";
 
