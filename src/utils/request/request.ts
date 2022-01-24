@@ -16,6 +16,17 @@ http.interceptors.request.use((config: any) => {
 })
 http.interceptors.response.use((response) => {
   // 对返回的结果做些什么
+  const data = response.data
+  // console.log(data);
+  if (!data.success) {
+    if (data.code === 401) {
+      location.href = '/login'
+    }
+    // err(Object.assign({}, response))
+    return Promise.reject(data)
+  }
+  // console.log(data);
+  // if(){ }
   return response
 }, err)
 export default http
