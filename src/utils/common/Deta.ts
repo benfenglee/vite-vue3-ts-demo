@@ -51,21 +51,3 @@ Date.prototype.dayhms = function (ms: number) {
     }
   }
 }
-// 从第二个字符开始大写字母转为_(小写字母) 例: ABc => a_bc
-function caselc(str: string): string {
-  /**
-   * 时间复杂度
-   * O(^n)
-   * */
-  let s = "";
-  str
-    .split("")
-    .forEach((el, i) =>
-      /[A-Z]/.test(el)
-        ? i === 0
-          ? (s += el.toLowerCase())
-          : (s += "_" + el.toLowerCase())
-        : (s += el)
-    );
-  return s;
-}

@@ -3,7 +3,7 @@ import App from '@/App.vue'
 import router from '@/router/index.ts'
 import store from '@/store/index.ts'
 // import Antd from 'ant-design-vue'
-import "@/utils/common.ts"
+import "@/utils/common"
 import CIcon from '@components/CIcon.vue'
 import 'animate.css'
 createApp(App)
