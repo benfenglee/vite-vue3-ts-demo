@@ -1,0 +1,32 @@
+// @import "../"
+[class~="border"] {
+  border: 1px solid;
+  @include borderColor("borderColor");
+}
+// 默认实线
+.border {
+  @include borderColor("borderColor");
+  border: 1px solid;
+}
+// 无
+.border-none {
+  border: none;
+}
+// 点状 虚线  双线
+$style: dotted, dashed, double;
+@each $item in $style {
+  .border-#{$item} {
+    @extend .border;
+    border-style: $item;
+  }
+}
+// 四个方向
+$direction: left, right, top, bottom;
+@each $item in $direction {
+  @each $el in $style {
+    .border-#{$item}-#{$el} {
+      @extend .border;
+      border-#{$item}-style: #{$el};
+    }
+  }
+}

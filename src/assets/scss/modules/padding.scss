@@ -1,0 +1,113 @@
+@import "./rem.scss";
+.padding-0 {
+  padding: 0;
+}
+.padding-xs {
+  padding: $xs;
+}
+.padding-sm {
+  padding: $sm;
+}
+.padding {
+  padding: $df;
+}
+.padding-lg {
+  padding: $lg;
+}
+.padding-xl {
+  padding: $xl;
+}
+.padding-xxl {
+  padding: $xxl;
+}
+.padding-auto {
+  padding: auto;
+}
+/**/
+.padding-top-xs {
+  padding-top: $xs;
+}
+.padding-top-sm {
+  padding-top: $sm;
+}
+.padding-top {
+  padding-top: $df;
+}
+.padding-top-lg {
+  padding-top: $lg;
+}
+.padding-top-xl {
+  padding-top: $xl;
+}
+.padding-top-xxl {
+  padding-top: $xxl;
+}
+.padding-top-auto {
+  padding-top: auto;
+}
+/***/
+.padding-left-xs {
+  padding-left: $xs;
+}
+.padding-left-sm {
+  padding-left: $sm;
+}
+.padding-left {
+  padding-left: $df;
+}
+.padding-left-lg {
+  padding-left: $lg;
+}
+.padding-left-xl {
+  padding-left: $xl;
+}
+.padding-left-xxl {
+  padding-left: $xxl;
+}
+.padding-left-auto {
+  padding-left: auto;
+}
+/***/
+.padding-right-xs {
+  padding-right: $xs;
+}
+.padding-right-sm {
+  padding-right: $sm;
+}
+.padding-right {
+  padding-right: $df;
+}
+.padding-right-lg {
+  padding-right: $lg;
+}
+.padding-right-xl {
+  padding-right: $xl;
+}
+.padding-right-xxl {
+  padding-right: $xxl;
+}
+.padding-right-auto {
+  padding-left: auto;
+}
+/***/
+.padding-bottom-xs {
+  padding-bottom: $xs;
+}
+.padding-bottom-sm {
+  padding-bottom: $sm;
+}
+.padding-bottom {
+  padding-bottom: $df;
+}
+.padding-bottom-lg {
+  padding-bottom: $lg;
+}
+.padding-bottom-xl {
+  padding-bottom: $xl;
+}
+.padding-bottom-xxl {
+  padding-bottom: $xxl;
+}
+.padding-bottom-auto {
+  padding-left: auto;
+}

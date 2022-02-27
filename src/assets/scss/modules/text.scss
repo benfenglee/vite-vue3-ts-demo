@@ -1,0 +1,33 @@
+/* 文字排版 */
+$align: left, right, center, justify;
+@each $item in $align {
+  .text-#{$item} {
+    text-align: $item;
+  }
+}
+// 垂直对齐
+$vertical-align: top, bottom, middle, text-top, text-bottom;
+@each $item in $vertical-align {
+  .vertical-#{$item} {
+    vertical-align: $item;
+  }
+}
+
+/* 溢出显示省略号（需要有宽高值） */
+.text-over {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+/* 多行溢出 */
+[class~="text-over-"] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+@for $i from 2 to 10 {
+  .text-over-#{$i} {
+    -webkit-line-clamp: $i;
+  }
+}

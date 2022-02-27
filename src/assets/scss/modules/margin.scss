@@ -1,0 +1,114 @@
+@import "./rem.scss";
+
+.margin-0 {
+  margin: 0;
+}
+.margin-xs {
+  margin: $xs;
+}
+.margin-sm {
+  margin: $sm;
+}
+.margin {
+  margin: $df;
+}
+.margin-lg {
+  margin: $lg;
+}
+.margin-xl {
+  margin: $xl;
+}
+.margin-xxl {
+  margin: $xxl;
+}
+.margin-auto {
+  margin: auto;
+}
+/**/
+.margin-top-xs {
+  margin-top: $xs;
+}
+.margin-top-sm {
+  margin-top: $sm;
+}
+.margin-top {
+  margin-top: $df;
+}
+.margin-top-lg {
+  margin-top: $lg;
+}
+.margin-top-xl {
+  margin-top: $xl;
+}
+.margin-top-xxl {
+  margin-top: $xxl;
+}
+.margin-top-auto {
+  margin-top: auto;
+}
+/***/
+.margin-left-xs {
+  margin-left: $xs;
+}
+.margin-left-sm {
+  margin-left: $sm;
+}
+.margin-left {
+  margin-left: $df;
+}
+.margin-left-lg {
+  margin-left: $lg;
+}
+.margin-left-xl {
+  margin-left: $xl;
+}
+.margin-left-xxl {
+  margin-left: $xxl;
+}
+.margin-left-auto {
+  margin-left: auto;
+}
+/***/
+.margin-right-xs {
+  margin-right: $xs;
+}
+.margin-right-sm {
+  margin-right: $sm;
+}
+.margin-right {
+  margin-right: $df;
+}
+.margin-right-lg {
+  margin-right: $lg;
+}
+.margin-right-xl {
+  margin-right: $xl;
+}
+.margin-right-xxl {
+  margin-right: $xxl;
+}
+.margin-right-auto {
+  margin-left: auto;
+}
+/***/
+.margin-right-xs {
+  margin-bottom: $xs;
+}
+.margin-bottom-sm {
+  margin-bottom: $sm;
+}
+.margin-bottom {
+  margin-bottom: $df;
+}
+.margin-bottom-lg {
+  margin-bottom: $lg;
+}
+.margin-bottom-xl {
+  margin-bottom: $xl;
+}
+.margin-bottom-xxl {
+  margin-bottom: $xxl;
+}
+.margin-bottom-auto {
+  margin-left: auto;
+}

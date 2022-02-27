@@ -1,0 +1,26 @@
+@import "./rem.scss";
+
+.font-0 {
+  font-size: 0;
+}
+.font-xs {
+  font-size: $xs;
+}
+.font-sm {
+  font-size: $sm;
+}
+.font {
+  font-size: $df;
+}
+.font-lg {
+  font-size: $lg;
+}
+.font-xl {
+  font-size: $xl;
+}
+.font-xxl {
+  font-size: $xxl;
+}
+.font-bold {
+  font-weight: bold;
+}

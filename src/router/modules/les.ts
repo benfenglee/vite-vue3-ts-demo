@@ -22,6 +22,13 @@ export default [
     },
   },
   {
+    path: '/basis',
+    name: 'BasisManage',
+    meta: {
+      title: '组件管理'
+    },
+  },
+  {
 
     path: '/camera_manage',
     name: 'CameraManage',

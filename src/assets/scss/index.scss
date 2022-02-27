@@ -1,0 +1,7 @@
+// 单位统一使用rem
+html,
+body {
+  font-size: 7.5px;
+}
+// 引入基础css,后续可以自己添加
+@import "./basis.scss";

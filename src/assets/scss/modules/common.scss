@@ -1,0 +1,18 @@
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+
+$display: flex, none, block, inline, inline-block, table;
+@each $item in $display {
+  .#{$item} {
+    display: $item;
+  }
+}
+@for $i from 0 through 10 {
+  .opacity-#{$i} {
+    opacity: $i * 0.1;
+  }
+}
