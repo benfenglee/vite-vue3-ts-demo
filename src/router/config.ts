@@ -4,6 +4,7 @@ import BigLayout from '../layout/bigscreen.vue'
 
 import Login from '../pages/Login/Login.vue'
 import BigScreenMap from '@/pages/bigscreen/BigScreenMap/BigScreenMap.vue'
+import BasisManage from '@/pages/basisManage/basisManage.vue'
 
 import les from './modules/les'
 export const routes = [
@@ -12,6 +13,14 @@ export const routes = [
     component: Layout,
     redirect: '/dict_manage',
     children: les
+  },
+  {
+    path: '/basis',
+    name: 'BasisManage',
+    component: BasisManage,
+    meta: {
+      title: '自定义组件'
+    }
   },
   {
     path: '/big',

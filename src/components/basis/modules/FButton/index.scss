@@ -1,0 +1,50 @@
+@import "@/components/basis/scss/index.scss";
+
+$df:$font-df;
+
+button {
+  background: none;
+  padding: $df - 8px $df - 4px;
+  border-radius: 4px;
+  margin: $df - 6px;
+  color: $black;
+  box-shadow: 0 0 6px $grey;
+  cursor: pointer;
+  font-size: $df;
+  transition: box-shadow 0.1s;
+
+  &[type] {
+    border: none;
+  }
+
+  &:hover {
+    text-shadow: 0px 0px 0px;
+  }
+
+  &:active {
+    box-shadow: 0 0 4px $grey, 0 0 4px inset $grey;
+  }
+
+  &:not(type) {
+    border: 1px solid $grey;
+  }
+
+  &[type="primary"] {
+    background-color: $blue;
+    color: $white;
+  }
+
+  &[type="danger"] {
+    background-color: $red;
+    color: $white;
+  }
+
+  &[type="dashed"] {
+    border: 1px dashed $grey;
+  }
+
+  &[type="link"] {
+    color: $blue;
+    box-shadow: none;
+  }
+}
