@@ -4,7 +4,7 @@ import router from '@/router/index.ts'
 import store from '@/store/index.ts'
 import F from './components/basis/index'
 // import Antd from 'ant-design-vue'
-import "@/utils/common.ts"
+import "@/utils/common"
 import CIcon from '@components/CIcon.vue'
 import 'animate.css'
 createApp(App)
